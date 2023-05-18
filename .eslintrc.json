@@ -1,3 +1,32 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "@rocketseat/eslint-config/react"],
+  "plugins": ["eslint-plugin-import-helpers"],
+  "rules": {
+    "tract/react-in-jsx-scope": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 90,
+        "tabWidth": 2,
+        "singleQuote": false,
+        "trailingComma": "all",
+        "arrowParens": "always",
+        "semi": true,
+        "endOfLine": "auto"
+      }
+    ],
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": [
+          ["/^react/", "/^next/", "/^@next/"],
+          "/module/",
+          "/^@shared/", 
+          "/absolute/", 
+          ["parent", "sibling", "index"]],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ]
+  }
 }

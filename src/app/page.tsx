@@ -1,18 +1,9 @@
-import Link from "next/link";
+import { LinkTo } from "@/components/LinkTo";
 
-export default async function Home() {
-
-  const data = await fetch('https://jsonplaceholder.typicode.com/users')
-  const users = await data.json()
-
+export default function Home() {
   return (
-    <main>
-      <h1>Opa</h1>
-      <Link href={'/dashboard'}>Dashboard</Link><br />
-      <div>
-        {JSON.stringify(users)}
-      </div>
-    </main>
+    <div className="">
+      <LinkTo href={""}>Opaaaaaaaaa</LinkTo>
+    </div>
   );
 }
- 
