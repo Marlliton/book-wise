@@ -4,14 +4,6 @@
 
 @layer base {
   body {
-    @apply bg-black h-screen;
-  }
-
-  h1, h2, h3 {
-    @apply text-gray-100
-  }
-
-  p, textarea, a {
-    @apply text-gray-200
+    @apply bg-black h-screen text-gray-100;
   }
 }

@@ -1,9 +1,9 @@
-import { LinkTo } from "@/components/LinkTo";
+import { Card } from "@/components/Card";
 
 export default function Home() {
   return (
     <div className="">
-      <LinkTo href={""}>Opaaaaaaaaa</LinkTo>
+      <Card small starQuantity={4} starHalf />
     </div>
   );
 }
