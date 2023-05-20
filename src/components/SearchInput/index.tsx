@@ -3,15 +3,15 @@ import { ComponentProps } from "react";
 import { MagnifyingGlass } from "phosphor-react";
 
 interface SearchInputProps extends ComponentProps<"input"> {
-  classesContainerStyle?: string;
+  containerStyles?: string;
 }
 
-export function SearchInput({ classesContainerStyle, ...rest }: SearchInputProps) {
+export function SearchInput({ containerStyles, ...rest }: SearchInputProps) {
   return (
     <div
       className={`
         flex gap-3 px-5 py-3 border-2 border-gray-800 text-gray-200 rounded focus-within:border-green-200
-        group ${!!classesContainerStyle && classesContainerStyle}
+        group ${!!containerStyles && containerStyles}
     `}
     >
       <input

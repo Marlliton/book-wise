@@ -1,9 +1,11 @@
-import { Card } from "@/components/Card";
+import i from "@/assets/prof.png";
+import { Avatar } from "@/components/Avatar";
+import { Image } from "@/components/Image";
 
 export default function Home() {
   return (
     <div className="">
-      <Card small starQuantity={4} starHalf />
+      <Avatar urlImage="https://github.com/marlliton.ng" />
     </div>
   );
 }

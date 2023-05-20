@@ -35,9 +35,11 @@ export function Card({ starQuantity, starHalf, small }: CardProps) {
   return (
     <div
       className={`
-      grid grid-cols-[108px_1fr] max-w-[600px] gap-5 text-gray-300 w-full bg-gray-600 
+      grid gap-5 text-gray-300 w-full bg-gray-600 
       rounded-lg py-5 px-6 border-2 border-transparent hover:border-gray-500 transition-all ${
-        small && "grid-cols-[64px_1fr] max-w-[350px] bg-gray-700"
+        small
+          ? "grid-cols-[64px_1fr] max-w-[350px] bg-gray-700"
+          : "grid-cols-[108px_1fr] max-w-[600px]"
       }
     `}
     >

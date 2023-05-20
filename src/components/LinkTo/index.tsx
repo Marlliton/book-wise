@@ -5,10 +5,9 @@ interface LinkToProps extends ComponentProps<typeof Link> {
   children: ReactNode;
   sm?: boolean;
   purple?: boolean;
-  className?: string;
 }
 
-export function LinkTo({ children, sm, className, purple, ...rest }: LinkToProps) {
+export function LinkTo({ children, sm, purple, ...rest }: LinkToProps) {
   return (
     <Link
       className={`py-1 px-3 flex gap-2 items-center justify-center max-w-max rounded ${
