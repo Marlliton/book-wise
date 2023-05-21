@@ -1,12 +1,16 @@
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider, { GoogleProfile } from "next-auth/providers/google";
 import { NextApiRequest, NextApiResponse } from "next/types";
+
+import { prisma } from "@/lib/prisma";
 
 export function buildNextAuth(
   req?: NextApiRequest,
   res?: NextApiResponse,
 ): NextAuthOptions {
   return {
+    adapter: PrismaAdapter(prisma),
     secret: process.env.NEXT_AUTH_SECRET,
     providers: [
       GoogleProvider({
@@ -22,24 +26,16 @@ export function buildNextAuth(
         profile(profile: GoogleProfile) {
           return {
             id: profile.sub,
-            avatar_url: profile.picture,
             email: profile.email,
             name: profile.name,
-            username: "",
+            avatar_url: profile.picture,
           };
         },
       }),
     ],
 
     callbacks: {
-      async signIn({ user }) {
-        if (!user?.email) {
-          return "/?error:login_error";
-        }
-        return true;
-      },
-
-      async session({ session, user }) {
+      session({ session, user }) {
         return { ...session, user };
       },
     },

@@ -12,7 +12,6 @@ import { Image } from "@/components/Image";
 
 export default function Auth() {
   const session = useSession();
-  console.log("🚀 ~ file: page.tsx:15 ~ Auth ~ session:", JSON.stringify(session));
   return (
     <div
       className={`h-screen grid grid-rows-[75px_1fr] md:grid-rows-1 md:grid-cols-[40%_1fr] p-5`}
@@ -28,6 +27,7 @@ export default function Auth() {
         <div className="flex flex-col gap-4">
           <h1 className="text-2xl font-bold">Boas Vindas</h1>
           <p className="mb-3 text-gray-400">Faça seu login ou acesse como visitante.</p>
+          {JSON.stringify(session.data)}
           <LoginButton onClick={() => signIn("google")}>
             <Image src={googleImage} alt="Simbolo do Google para login" />
             Acessar como visitante
