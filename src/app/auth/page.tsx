@@ -32,7 +32,7 @@ export default function Auth() {
             <Image src={googleImage} alt="Simbolo do Google para login" />
             Acessar como visitante
           </LoginButton>
-          <LoginButton>
+          <LoginButton onClick={() => signIn("github")}>
             <Image src={gitHubImage} alt="Simbolo do GitHub para login" />
             Acessar como visitante
           </LoginButton>
