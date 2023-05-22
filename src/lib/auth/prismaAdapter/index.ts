@@ -11,7 +11,7 @@ export function PrismaAdapter(): Adapter {
           email: user.email,
           avatar_url: user.avatar_url,
         },
-      })
+      });
 
       return {
         id: createdUser.id,
@@ -19,7 +19,7 @@ export function PrismaAdapter(): Adapter {
         email: createdUser.email!,
         avatar_url: createdUser.avatar_url!,
         emailVerified: null,
-      }
+      };
     },
 
     async getUser(id) {
@@ -27,10 +27,10 @@ export function PrismaAdapter(): Adapter {
         where: {
           id,
         },
-      })
+      });
 
       if (!user) {
-        return null
+        return null;
       }
 
       return {
@@ -39,7 +39,7 @@ export function PrismaAdapter(): Adapter {
         email: user.email!,
         emailVerified: null,
         avatar_url: user.avatar_url!,
-      }
+      };
     },
 
     async getUserByEmail(email) {
@@ -47,10 +47,10 @@ export function PrismaAdapter(): Adapter {
         where: {
           email,
         },
-      })
+      });
 
       if (!user) {
-        return null
+        return null;
       }
 
       return {
@@ -59,7 +59,7 @@ export function PrismaAdapter(): Adapter {
         email: user.email!,
         emailVerified: null,
         avatar_url: user.avatar_url!,
-      }
+      };
     },
 
     async getUserByAccount({ providerAccountId, provider }) {
@@ -73,13 +73,13 @@ export function PrismaAdapter(): Adapter {
         include: {
           user: true,
         },
-      })
+      });
 
       if (!account) {
-        return null
+        return null;
       }
 
-      const { user } = account
+      const { user } = account;
 
       return {
         id: user.id,
@@ -87,7 +87,7 @@ export function PrismaAdapter(): Adapter {
         email: user.email!,
         emailVerified: null,
         avatar_url: user.avatar_url!,
-      }
+      };
     },
 
     async updateUser(user) {
@@ -100,7 +100,7 @@ export function PrismaAdapter(): Adapter {
           email: user.email,
           avatar_url: user.avatar_url,
         },
-      })
+      });
 
       return {
         id: updatedUser.id,
@@ -108,7 +108,7 @@ export function PrismaAdapter(): Adapter {
         email: updatedUser.email!,
         emailVerified: null,
         avatar_url: updatedUser.avatar_url!,
-      }
+      };
     },
 
     async linkAccount(account) {
@@ -126,7 +126,7 @@ export function PrismaAdapter(): Adapter {
           id_token: account.id_token,
           session_state: account.session_state,
         },
-      })
+      });
     },
 
     async createSession({ sessionToken, userId, expires }) {
@@ -134,15 +134,15 @@ export function PrismaAdapter(): Adapter {
         data: {
           session_token: sessionToken,
           user_id: userId,
-          expires: expires,
+          expires,
         },
-      })
+      });
 
       return {
         sessionToken,
         userId,
         expires,
-      }
+      };
     },
 
     async getSessionAndUser(sessionToken) {
@@ -153,12 +153,12 @@ export function PrismaAdapter(): Adapter {
         include: {
           user: true,
         },
-      })
+      });
       if (!prismaSession) {
-        return null
+        return null;
       }
 
-      const { user, ...session } = prismaSession
+      const { user, ...session } = prismaSession;
 
       return {
         session: {
@@ -173,7 +173,7 @@ export function PrismaAdapter(): Adapter {
           emailVerified: null,
           avatar_url: user.avatar_url!,
         },
-      }
+      };
     },
 
     async updateSession({ sessionToken, userId, expires }) {
@@ -185,13 +185,13 @@ export function PrismaAdapter(): Adapter {
           expires,
           user_id: userId,
         },
-      })
+      });
 
       return {
         sessionToken: updatedSession.session_token,
         userId: updatedSession.user_id,
         expires: updatedSession.expires,
-      }
+      };
     },
 
     async deleteSession(sessionToken) {
@@ -199,7 +199,7 @@ export function PrismaAdapter(): Adapter {
         where: {
           session_token: sessionToken,
         },
-      })
+      });
     },
-  }
+  };
 }
