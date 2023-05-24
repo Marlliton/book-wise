@@ -22,8 +22,8 @@
         "groups": [
           ["/^react/", "/^next/", "/^@next/"],
           "/module/",
-          "/^@shared/", 
           "/absolute/", 
+          "/^@shared/", 
           ["parent", "sibling", "index"]
         ],
         "alphabetize": { "order": "asc", "ignoreCase": true }

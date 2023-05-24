@@ -1,3 +1,5 @@
-export default function Home() {
-  return <div className=""></div>;
+import { Home } from "./home";
+
+export default function App() {
+  return <Home />;
 }

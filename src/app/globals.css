@@ -4,6 +4,6 @@
 
 @layer base {
   body {
-    @apply bg-black h-screen text-gray-100;
+    @apply bg-black h-screen text-gray-100 max-w-screen-2xl mt-0 mx-auto p-5;
   }
 }

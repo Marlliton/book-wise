@@ -16,9 +16,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt_BR" className="scroll-smooth antialiased">
       <AuthProvider>
-        <body className={`${nunito.className} max-w-screen-2xl mt-0 mx-auto`}>
-          {children}
-        </body>
+        <body className={`${nunito.className}`}>{children}</body>
       </AuthProvider>
     </html>
   );
