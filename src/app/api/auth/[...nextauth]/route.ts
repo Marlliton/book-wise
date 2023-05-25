@@ -36,6 +36,9 @@ export function buildNextAuth(
             response_type: "code",
           },
         },
+        httpOptions: {
+          timeout: 40000,
+        },
         profile(profile: GoogleProfile) {
           return {
             id: profile.sub,

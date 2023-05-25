@@ -21,10 +21,10 @@
         "newlinesBetween": "always",
         "groups": [
           ["/^react/", "/^next/", "/^@next/"],
-          "/module/",
+          ["parent", "sibling", "index"],
+          "/^@shared/",
           "/absolute/", 
-          "/^@shared/", 
-          ["parent", "sibling", "index"]
+          "/module/"
         ],
         "alphabetize": { "order": "asc", "ignoreCase": true }
       }
