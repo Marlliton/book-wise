@@ -10,7 +10,7 @@ import googleImage from "@/assets/google.svg";
 import logoImage from "@/assets/logo.svg";
 import rocketImage from "@/assets/rocket-launch.svg";
 import { Image } from "@/components/Image";
-import { setCookie } from "nookies";
+import { setCookie, destroyCookie } from "nookies";
 
 export default function Auth() {
   const session = useSession();
@@ -18,6 +18,9 @@ export default function Auth() {
 
   async function handleLogin(provider: "google" | "github") {
     await signIn(provider);
+    if (session.status === "authenticated") {
+      destroyCookie(null, "bookwise:visitor");
+    }
   }
 
   function handleRedirectVisitor() {
@@ -50,15 +53,24 @@ export default function Auth() {
           <p className="mb-3 text-gray-400">Faça seu login ou acesse como visitante.</p>
 
           <LoginButton onClick={() => handleLogin("google")}>
-            <Image src={googleImage} alt="Simbolo do Google para login" />
+            <Image
+              className="max-w-max"
+              src={googleImage}
+              alt="Simbolo do Google para login"
+            />
             Acessar como visitante
           </LoginButton>
           <LoginButton onClick={() => () => handleLogin("github")}>
-            <Image src={gitHubImage} alt="Simbolo do GitHub para login" />
+            <Image
+              src={gitHubImage}
+              className="max-w-max"
+              alt="Simbolo do GitHub para login"
+            />
             Acessar como visitante
           </LoginButton>
           <LoginButton onClick={handleRedirectVisitor}>
             <Image
+              className="max-w-max"
               src={rocketImage}
               alt="Simbolo de um foguete para entrar como visitante"
             />

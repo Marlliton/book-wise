@@ -1,4 +1,5 @@
 "use client";
+import { useSession } from "next-auth/react";
 import React, { ReactNode, useEffect, useState } from "react";
 
 import { Avatar } from "../Avatar";
@@ -12,6 +13,7 @@ interface SideNavProps {
 
 export function SideNav({ children }: SideNavProps) {
   const [selectedLink, setSelectedLink] = useState<number | null>(null);
+  const { data } = useSession();
 
   useEffect(() => {
     if (!selectedLink && Array.isArray(children) && children.length) {
@@ -45,7 +47,7 @@ export function SideNav({ children }: SideNavProps) {
       </header>
 
       <footer>
-        <Avatar urlImage={"https://github.com/marlliton.png"} />
+        <Avatar urlImage={data?.user.avatar_url} />
       </footer>
     </aside>
   );
