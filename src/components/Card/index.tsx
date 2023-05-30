@@ -15,6 +15,7 @@ interface CardProps {
   small?: boolean;
   showAvatar?: boolean;
   avatarUrl?: string;
+  className?: string;
 }
 
 export function Card({
@@ -27,6 +28,7 @@ export function Card({
   summary,
   coverUrl,
   avatarUrl,
+  className,
 }: CardProps) {
   function renderStar() {
     return (
@@ -52,8 +54,10 @@ export function Card({
   return (
     <div
       className={`
-      flex flex-col gap-8 text-gray-300 w-full rounded-lg py-5 px-6 border-2 border-transparent hover:border-gray-500 
-      transition-all ${small ? "max-w-[350px] bg-gray-700" : "max-w-[600px] bg-gray-600"}
+      flex flex-col gap-8 text-gray-300 w-full rounded-lg py-5 px-6 border-2 border-transparent 
+      hover:border-gray-500 transition-all ${
+        small ? "max-w-[350px] bg-gray-700" : "max-w-[600px] bg-gray-600"
+      } ${!!className && className}
     `}
     >
       {showAvatar && (
@@ -86,7 +90,7 @@ export function Card({
                 showAvatar ? "line-clamp-4" : "line-clamp-2"
               }`}
             >
-              {summary} <button>ver mais</button>
+              {summary}
             </span>
           ) : (
             renderStar()
