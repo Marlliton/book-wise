@@ -1,4 +1,6 @@
 "use client";
+import { use } from "react";
+
 import { Card } from "@/components/Card";
 import { LinkTo } from "@/components/LinkTo";
 import { dataFetch } from "@/lib/fetch";
@@ -21,8 +23,10 @@ interface Rating {
   };
 }
 
-export default async function Home() {
-  const ratings = await dataFetch<Rating[]>("/books/ratings");
+const ratingsPromise = dataFetch<Rating[]>("/books/ratings");
+
+export default function Home() {
+  const ratings = use(ratingsPromise);
 
   return (
     <div className="flex flex-col justify-center items-center">

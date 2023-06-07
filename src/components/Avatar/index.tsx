@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
 import { Image } from "../Image";
 
@@ -12,28 +12,24 @@ interface AvatarProps {
 
 export function Avatar({ urlImage, alt }: AvatarProps) {
   const [fallback, setFallback] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  function handleOnLoad() {
-    setImageLoaded(true);
-  }
 
   return (
     <div
       className={`p-[2px] flex justify-center items-center rounded-full 
-      h-10 w-10 ${fallback ? "bg-gray-700/90" : imageLoaded && "bg-gradient-horizontal"}`}
+      h-10 w-10 ${fallback && "bg-gray-700/90"}`}
     >
       {!fallback ? (
         <div className="relative w-full h-full rounded-full overflow-hidden">
-          <Image
-            onError={() => setFallback(true)}
-            priority
-            src={urlImage}
-            alt={alt ?? ""}
-            fill
-            style={{ objectFit: "cover" }}
-            onLoad={handleOnLoad}
-          />
+          <Suspense fallback={<span>Carregando</span>}>
+            <Image
+              onError={() => setFallback(true)}
+              priority
+              src={urlImage}
+              alt={alt ?? ""}
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </Suspense>
         </div>
       ) : (
         <User size={24} />
